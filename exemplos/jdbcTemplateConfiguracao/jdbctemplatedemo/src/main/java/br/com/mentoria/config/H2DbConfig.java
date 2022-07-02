@@ -21,6 +21,7 @@ public class H2DbConfig {
 				.setType(EmbeddedDatabaseType.H2)
 				.generateUniqueName(true)
 				.addScript("db/schema.sql")
+				.addScript("db/test-data.sql")
 				.build();
 		return db;
 	}

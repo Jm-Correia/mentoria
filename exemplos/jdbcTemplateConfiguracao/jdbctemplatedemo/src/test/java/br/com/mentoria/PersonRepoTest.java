@@ -29,7 +29,6 @@ public class PersonRepoTest {
 	
 	@Test
 	public void testFindByIdPositive() {
-		repo.insert(new Person(1, "Fulano", "De tal"));
-		repo.findById(1).ifPresentOrElse(p-> assertEquals("Fulano", p.getName()), Assertions::fail);
+		repo.findById(5).ifPresentOrElse(p-> assertEquals("Bat", p.getName()), Assertions::fail);
 	}
 }
