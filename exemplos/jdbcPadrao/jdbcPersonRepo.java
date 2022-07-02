@@ -3,6 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import jdbcPadrao.*;
 
 /**
  * jdbcPersonRepo
@@ -21,7 +22,7 @@ public class jdbcPersonRepo {
 
         try {
             // dataSource seria outra classe da aplicacao que prove a conecao.
-            conn = dataSource.getConnection();
+            conn = DataSource.getConnection();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {

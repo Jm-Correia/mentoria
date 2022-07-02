@@ -3,6 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import jdbcPadrao.*;
 
 /**
  * jdbcPersonRepojava8
@@ -16,7 +17,7 @@ public class jdbcPersonRepojava8 {
                 "p.last as LastName from PERSON p ";
 
         // dataSource seria outra classe da aplicacao que prove a conecao.
-        try (Connection conn = dataSource.getConnection();
+        try (Connection conn = DataSource.getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql)) {
 
             try (ResultSet rs = ps.executeQuery();) {
