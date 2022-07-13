@@ -37,8 +37,10 @@ public class JdbctemplatedemoApplication implements CommandLineRunner{
 		repo.insert(p3);
 		logger.info("-------------------------------");
 		logger.info("Consultando todas as pessoas");
+		
 		repo.findAll()
 			.stream()
+			.filter(person -> person.getId() > 2)
 			.forEach(person -> logger.info(person.toString()));
 		
 		logger.info("-------------------------------");

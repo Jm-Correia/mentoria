@@ -1,6 +1,6 @@
 public class Person {
 
-    private Integer id;
+    private Integer id; // TODO falar sobre id nao natural.
     private String name;
     private String lastName;
 

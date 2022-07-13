@@ -37,7 +37,10 @@ public class PersonRepository implements GenericRepo<Person> {
 
 	@Override
 	public List<Person> findAll() {
-		return jdbcTemplate.query("select p.id as ID, p.name as NAME, p.lastName as LASTNAME from person p", new PersonRowMapper());
+		List<Person> lista= jdbcTemplate.query("SELECT ID, NAME, LASTNAME FROM PERSON", new PersonRowMapper());
+		
+		//return jdbcTemplate.query("select p.id as ID, p.name as NAME, p.lastName as LASTNAME from person p", new PersonRowMapper());
+		return lista;
 	}
 
 	@Override
@@ -50,8 +53,7 @@ public class PersonRepository implements GenericRepo<Person> {
 	@Override
 	public void insert(Person entity) {
 		jdbcTemplate.update("insert into person (id,name, lastName) values (?,?,?)",
-				entity.getId(), entity.getName(), entity.getLastName());
-		
+				entity.getId(), entity.getName(), entity.getLastName());		
 	}
 
 	@Transactional
