@@ -1,32 +1,39 @@
 package br.com.mentoria.model;
 
-public class Endereco {
+public class Endereco extends BaseEntity {
 	
-	private Integer id;
 	private String logradouro;
 	private String numero;
 	private String complemento;
 	private String bairro;
 	private String cep;
 	
+	private Integer pessoaId;
+	
+	private Cidade cidade;
+	
+	public static String entityName = "ENDERECO";
+	
 		
 	public Endereco() {
+		
 	}
 	
-	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep) {
+	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Integer pessoaId, Integer cidadeId) {
+		
 		this.id = id;
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.complemento = complemento;
 		this.bairro = bairro;
 		this.cep = cep;
+		this.pessoaId = pessoaId;
+		this.cidade = new Cidade(cidadeId);
 	}
 	public Integer getId() {
 		return id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -57,12 +64,34 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	
+	
+
+	public Integer getPessoaId() {
+		return pessoaId;
+	}
+
+	public void setPessoaId(Integer pessoaId) {
+		this.pessoaId = pessoaId;
+	}
+	
+	
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
 
 	@Override
 	public String toString() {
 		return "Endereco [id=" + id + ", logradouro=" + logradouro + ", numero=" + numero + ", complemento="
 				+ complemento + ", bairro=" + bairro + ", cep=" + cep + "]";
 	}
+
+
 	
 	
 }

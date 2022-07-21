@@ -10,38 +10,42 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import br.com.mentoria.enumerator.TipoPessoa;
+import br.com.mentoria.model.Endereco;
 import br.com.mentoria.model.Pessoa;
 
-
 @Repository
-public class PessoaRepository implements GenericDao<Pessoa> {
+public class EnderecoRepository implements GenericDao<Endereco> {
 
+	
+	private JdbcTemplate repo;
+	
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	public EnderecoRepository(JdbcTemplate jdbcTemplate) {
+		this.repo = jdbcTemplate;
+	}
 	
 	@Override
-	public List<Pessoa> findAll() {
+	public List<Endereco> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Pessoa> findById(int id) {
+	public Optional<Endereco> findById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void insert(Pessoa entity) {
+	public void insert(Endereco entity) {
 		
-		jdbcTemplate.update("insert into PESSOA (id,nome, email, cpfOuCnpj, tipo) values (?,?,?,?,?)",
-				entity.getId(), entity.getNome(), entity.getEmail(), entity.getCpfOuCnpj(), TipoPessoa.getId(entity.getTipo()));
+		repo.update("insert into ENDERECO (id, logradouro, numero, complemento, bairro, cep, id_pessoa) values (?,?,?,?,?,?,?)", 
+				nextValue(),entity.getLogradouro(), entity.getNumero(), entity.getComplemento(), entity.getBairro(), entity.getCep(), entity.getPessoaId());
 		
 	}
 
 	@Override
-	public Optional<Pessoa> update(Pessoa entity) {
+	public Optional<Endereco> update(Endereco entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -53,21 +57,21 @@ public class PessoaRepository implements GenericDao<Pessoa> {
 	}
 
 	@Override
-	public void insertLote(List<Pessoa> list) {
+	public void insertLote(List<Endereco> list) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public int nextValue() {
-		var seq = jdbcTemplate.queryForObject("select nextval(?)", new RowMapper<Integer>() {
+		var seq = repo.queryForObject("select nextval(?)", new RowMapper<Integer>() {
 
 			@Override
 			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
 				return rs.getInt(1);
 			}
 			
-		}, "SEQ_" + Pessoa.entityName + "_id");
+		}, "SEQ_" + Endereco.entityName + "_id");
 		return seq;
 	}
 

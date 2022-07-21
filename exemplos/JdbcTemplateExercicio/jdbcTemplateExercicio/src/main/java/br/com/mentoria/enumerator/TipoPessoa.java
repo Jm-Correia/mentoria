@@ -12,6 +12,20 @@ public enum TipoPessoa {
 		this.value = value;
 	}
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public String getValue() {
+		return value;
+	}
+
+
+
 	public static int getId(TipoPessoa tipoPessoa) {
 		
 		for(TipoPessoa tipo: TipoPessoa.values()) {

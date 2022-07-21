@@ -1,11 +1,12 @@
 package br.com.mentoria.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.mentoria.enumerator.TipoPessoa;
 
-public class Pessoa {
+public class Pessoa extends BaseEntity {
 
-	private Integer id;
-	
 	private String nome;
 	
 	private String email;
@@ -13,14 +14,21 @@ public class Pessoa {
 	private String cpfOuCnpj;
 	
 	private TipoPessoa tipo;
-
+	
+	public static String entityName = "PESSOA";
+	
+	
+	private List<Endereco> enderecos = new ArrayList<>();
+	private List<Telefone> telefones = new ArrayList<>();
+	
 	public Pessoa() {
+		
 	}
-	
-	
+
 	
 	public Pessoa(Integer id, String nome, String email, String cpfOuCnpj, TipoPessoa tipo) {
 		super();
+		
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
@@ -31,6 +39,7 @@ public class Pessoa {
 
 
 	public Pessoa(Integer id, String nome, String email, String cpfOuCnpj, Integer tipo) {
+		
 		this.id= id;
 		this.nome = nome;
 		this.email = email;
@@ -41,9 +50,9 @@ public class Pessoa {
 	@Override
 	public String toString() {
 		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + ", cpfOuCnpj=" + cpfOuCnpj + ", tipo="
-				+ tipo + "]";
+				+ tipo.getId() + " "+ tipo.getValue() + "]";
 	}
-
+		
 	public Integer getId() {
 		return id;
 	}
@@ -63,6 +72,34 @@ public class Pessoa {
 	public TipoPessoa getTipo() {
 		return tipo;
 	}
+
+
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
+
+
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
+
+
+
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
+	}
+
+
+
+	
 	
 	
 	

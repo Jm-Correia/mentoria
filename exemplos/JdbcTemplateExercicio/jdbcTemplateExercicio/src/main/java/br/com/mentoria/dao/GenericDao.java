@@ -3,7 +3,7 @@ package br.com.mentoria.dao;
 import java.util.List;
 import java.util.Optional;
 
-public interface GenericDao<T> {
+public interface GenericDao<T> extends Sequencial {
 
 	public List<T> findAll();
 	public Optional<T> findById(int id);
