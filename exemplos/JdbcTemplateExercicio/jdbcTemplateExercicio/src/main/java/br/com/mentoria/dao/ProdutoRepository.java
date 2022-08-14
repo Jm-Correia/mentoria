@@ -24,6 +24,7 @@ import br.com.mentoria.dao.interfaces.InsertPorLoteDAO;
 import br.com.mentoria.dao.interfaces.PagingAndSortingDAO;
 import br.com.mentoria.dao.interfaces.Sequencial;
 import br.com.mentoria.enumerator.Categoria;
+import br.com.mentoria.helper.Pagination;
 import br.com.mentoria.model.BaseEntity;
 import br.com.mentoria.model.Produto;
 
@@ -34,15 +35,15 @@ public class ProdutoRepository implements Sequencial<Produto>, InsertPorLoteDAO<
 	private JdbcTemplate jdbcTemplate;
 	
 	@Override
-	public Page<Produto> findAll(Pageable pageable) {
+	public Pagination<Produto> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		Order order = pageable.getSort().isEmpty() ? Order.by("ID") : pageable.getSort().toList().get(0);
 		var orderBy = order.getProperty() + " " + order.getDirection().name();
 		var count = count();		
-		var produtos = parseMapToList(jdbcTemplate.queryForList("SELECT * FROM PRODUTO ORDER BY " + orderBy + " LIMIT " + pageable.getPageSize() + " OFFSET " + pageable.getOffset()));
+		var produtos = parseMapToList(jdbcTemplate.queryForList("SELECT * FROM PRODUTO ORDER BY " + orderBy + " LIMIT " + (pageable.getPageSize()) + " OFFSET " + (pageable.getOffset())));
 		
 		
-		return new PageImpl<Produto>(produtos, pageable, count);
+		return new Pagination<Produto>(produtos, pageable, count, "produtos");
 		
 	}
 

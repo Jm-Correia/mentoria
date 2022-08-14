@@ -119,7 +119,7 @@ public class JdbcTemplateExercicioApplication implements CommandLineRunner {
 		
 		PageRequest page = PageRequest.of(0, 5, Direction.DESC, "ID");
 		var pageable = produtoRepo.findAll(page);
-		log.info("Lista de Produtos {} produtos: {}", pageable.getSize(),pageable.toList().toString());
+		log.info("Lista de Produtos {} produtos: {}", pageable.getMeta().getTotalPages(),pageable.getData().toString());
 	}
 
 }

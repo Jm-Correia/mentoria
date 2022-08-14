@@ -17,11 +17,11 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository repo;
 	
-	@GetMapping(value = "/page")
+	@GetMapping()
 	public ResponseEntity<?> getAllProdutosByPageable(@RequestParam(value = "page") Integer page, @RequestParam(value = "size") Integer size,
 			@RequestParam(value = "orderBy", defaultValue = "ID") String orderBy, @RequestParam(value = "direction", defaultValue = "ASC") String direction){
 		
-		var produtos = repo.findAll(PageRequest.of(page, size));
+		var produtos = repo.findAll(PageRequest.of(page-1, size));
 		return ResponseEntity.ok().body(produtos); 
 	}
 	
