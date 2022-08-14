@@ -10,49 +10,14 @@ import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import br.com.mentoria.model.Endereco;
+import br.com.mentoria.dao.interfaces.InsertPorLoteDAO;
 import br.com.mentoria.model.Estado;
 
 @Repository
-public class EstadoRepository implements GenericDao<Estado> {
+public class EstadoRepository implements InsertPorLoteDAO<Estado> {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
-	@Override
-	public int nextValue() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<Estado> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Optional<Estado> findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void insert(Estado entity) {
-		jdbcTemplate.update("insert into Estado (id, nome) values (?,?)", entity.getId(), entity.getNome());
-	}
-
-	@Override
-	public Optional<Estado> update(Estado entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteById(int id) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void insertLote(List<Estado> list) {
@@ -73,6 +38,7 @@ public class EstadoRepository implements GenericDao<Estado> {
 			}
 		});
 	}
+
 
 
 }

@@ -1,6 +1,8 @@
 package br.com.mentoria.model;
 
-public class Endereco extends BaseEntity {
+@SuppressWarnings("serial")
+public class Endereco extends BaseEntity<Integer> {
+	
 	
 	private String logradouro;
 	private String numero;
@@ -12,14 +14,12 @@ public class Endereco extends BaseEntity {
 	
 	private Cidade cidade;
 	
-	public static String entityName = "ENDERECO";
-	
 		
 	public Endereco() {
 		
 	}
 	
-	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Integer pessoaId, Integer cidadeId) {
+	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Integer pessoaId, Cidade cidadeId) {
 		
 		this.id = id;
 		this.logradouro = logradouro;
@@ -28,8 +28,9 @@ public class Endereco extends BaseEntity {
 		this.bairro = bairro;
 		this.cep = cep;
 		this.pessoaId = pessoaId;
-		this.cidade = new Cidade(cidadeId);
+		this.cidade = cidadeId;
 	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -88,8 +89,11 @@ public class Endereco extends BaseEntity {
 	@Override
 	public String toString() {
 		return "Endereco [id=" + id + ", logradouro=" + logradouro + ", numero=" + numero + ", complemento="
-				+ complemento + ", bairro=" + bairro + ", cep=" + cep + "]";
+				+ complemento + ", bairro=" + bairro + ", cep=" + cep + ", cidadeId=" + cidade.getId() + "]";
 	}
+
+
+	
 
 
 	

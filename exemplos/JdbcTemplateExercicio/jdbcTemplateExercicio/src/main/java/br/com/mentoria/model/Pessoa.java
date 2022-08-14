@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.com.mentoria.enumerator.TipoPessoa;
 
-public class Pessoa extends BaseEntity {
+public class Pessoa extends BaseEntity<Integer> {
 
 	private String nome;
 	
@@ -96,6 +96,12 @@ public class Pessoa extends BaseEntity {
 	public void setTelefones(List<Telefone> telefones) {
 		this.telefones = telefones;
 	}
+
+
+//	@Override
+//	public String getEntityName() {
+//		return getClass().getName().toUpperCase();
+//	}
 
 
 

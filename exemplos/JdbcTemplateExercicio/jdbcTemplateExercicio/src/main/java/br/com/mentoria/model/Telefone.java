@@ -1,8 +1,8 @@
 package br.com.mentoria.model;
 
-public class Telefone {
+@SuppressWarnings("serial")
+public class Telefone extends BaseEntity<Integer> {
 
-	private Integer id;
 	private String ddd;
 	private String numero;
 	
@@ -35,9 +35,6 @@ public class Telefone {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getDdd() {
 		return ddd;

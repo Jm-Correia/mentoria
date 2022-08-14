@@ -3,10 +3,10 @@ package br.com.mentoria.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Estado {
+@SuppressWarnings("serial")
+public class Estado extends BaseEntity<Integer> {
 
 	
-	private Integer id;
 	private String nome;
 	
 	private List<Cidade> cidades = new ArrayList<>();
@@ -37,10 +37,6 @@ public class Estado {
 		return id;
 	}
 
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 
 	public String getNome() {

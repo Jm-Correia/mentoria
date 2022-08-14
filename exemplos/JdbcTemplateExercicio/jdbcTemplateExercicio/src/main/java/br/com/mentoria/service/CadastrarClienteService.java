@@ -25,10 +25,8 @@ public class CadastrarClienteService {
 		
 	@Transactional
 	public void cadastrarPessoa(Pessoa cliente, Endereco end) {
-		log.info("Call Next Id database");
-		cliente.setIdDataBase(pessoaRepo.nextValue());
 		log.info("Inserindo new Cliente");
-		pessoaRepo.insert(cliente);
+		cliente = pessoaRepo.insert(cliente);
 		log.info("Setando clienteID no endereco");
 		end.setPessoaId(cliente.getId());
 		log.info("Inserindo Enderco do cliente: " + cliente.getId());

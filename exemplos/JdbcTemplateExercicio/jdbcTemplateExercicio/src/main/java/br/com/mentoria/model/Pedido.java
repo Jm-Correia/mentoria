@@ -6,9 +6,9 @@ import java.util.List;
 
 import br.com.mentoria.enumerator.StatusPedido;
 
-public class Pedido {
+@SuppressWarnings("serial")
+public class Pedido extends BaseEntity<Integer> {
 
-	private Integer id;
 	private Integer clienteId;
 	
 	private LocalDateTime instante = LocalDateTime.now();

@@ -1,8 +1,9 @@
 package br.com.mentoria.model;
 
-public class Cidade {
+@SuppressWarnings("serial")
+public class Cidade extends BaseEntity<Integer> {
 
-	private Integer id;
+	
 	private String nome;
 	private Integer estadoId;
 	

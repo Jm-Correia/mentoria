@@ -14,9 +14,9 @@ public class ItemPerdidoTest {
 	@Test
 	public void calcularDescontoItems() {
 		
-		Produto p1 = new Produto("Pao de frances", 4.9, null, Categoria.food);
-		Produto p2 = new Produto("Pao de Forma", 8.9, null, Categoria.food);
-		Produto p3 = new Produto("Queijo", 12.9, null, Categoria.food);
+		Produto p1 = new Produto("Pao de frances", 4.9,  Categoria.food);
+		Produto p2 = new Produto("Pao de Forma", 8.9,  Categoria.food);
+		Produto p3 = new Produto("Queijo", 12.9,  Categoria.food);
 		
 		ItemPerdido item1 = new ItemPerdido(1, p1.getPreco(), p1);
 		ItemPerdido item2 = new ItemPerdido(3, p2.getPreco(), p2);
@@ -31,9 +31,9 @@ public class ItemPerdidoTest {
 	@Test
 	public void calcularTotalItems() {
 		
-		Produto p1 = new Produto("Pao de frances", 4.9, null, Categoria.food);
-		Produto p2 = new Produto("Pao de Forma", 8.9, null, Categoria.food);
-		Produto p3 = new Produto("Queijo", 12.9, null, Categoria.food);
+		Produto p1 = new Produto("Pao de frances", 4.9,  Categoria.food);
+		Produto p2 = new Produto("Pao de Forma", 8.9,  Categoria.food);
+		Produto p3 = new Produto("Queijo", 12.9,  Categoria.food);
 		
 		ItemPerdido item1 = new ItemPerdido(1, p1.getPreco(), p1);
 		ItemPerdido item2 = new ItemPerdido(3, p2.getPreco(), p2);

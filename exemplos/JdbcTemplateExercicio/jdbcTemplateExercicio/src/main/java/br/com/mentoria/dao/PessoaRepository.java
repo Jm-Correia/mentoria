@@ -2,7 +2,6 @@ package br.com.mentoria.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,33 +9,54 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import br.com.mentoria.dao.interfaces.CrudBasicoDAO;
+import br.com.mentoria.dao.interfaces.Sequencial;
 import br.com.mentoria.enumerator.TipoPessoa;
+import br.com.mentoria.model.BaseEntity;
 import br.com.mentoria.model.Pessoa;
 
 
 @Repository
-public class PessoaRepository implements GenericDao<Pessoa> {
+public class PessoaRepository implements CrudBasicoDAO<Pessoa>, Sequencial<Pessoa> {
 
+	private static String PESSOA_NOME = "nome";
+	private static String PESSOA_EMAIL= "email";
+	private static String PESSOA_CPF_OR_CNPJ = "cpfOuCnpj";
+	private static String TIPO_PESSOA = "tipo";
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	@Override
-	public List<Pessoa> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 
 	@Override
 	public Optional<Pessoa> findById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject("SELECT PESSOA.nome, PESSOA.email, PESSOA.cpfOuCnpj, PESSOA.tipo FROM PESSOA WHERE id=?", new RowMapper<Optional<Pessoa>>() {
+
+			@Override
+			public Optional<Pessoa> mapRow(ResultSet rs, int rowNum) throws SQLException {
+				var p = new Pessoa(id, 
+						rs.getString(PESSOA_NOME), 
+						rs.getString(PESSOA_EMAIL), 
+						rs.getString(PESSOA_CPF_OR_CNPJ), 
+						rs.getInt(TIPO_PESSOA));
+				
+				return Optional.of(p);
+			}
+
+			
+			
+		}, id);
 	}
 
 	@Override
-	public void insert(Pessoa entity) {
-		
+	public Pessoa insert(Pessoa entity) {
+		var pessoa = nextValue(entity);
 		jdbcTemplate.update("insert into PESSOA (id,nome, email, cpfOuCnpj, tipo) values (?,?,?,?,?)",
-				entity.getId(), entity.getNome(), entity.getEmail(), entity.getCpfOuCnpj(), TipoPessoa.getId(entity.getTipo()));
+				pessoa.getId(), pessoa.getNome(), pessoa.getEmail(), pessoa.getCpfOuCnpj(), TipoPessoa.getId(pessoa.getTipo()));
+		return pessoa;
 		
 	}
 
@@ -52,23 +72,20 @@ public class PessoaRepository implements GenericDao<Pessoa> {
 		
 	}
 
-	@Override
-	public void insertLote(List<Pessoa> list) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
-	public int nextValue() {
-		var seq = jdbcTemplate.queryForObject("select nextval(?)", new RowMapper<Integer>() {
+	public Pessoa nextValue(Pessoa entity) {
+		
+		return jdbcTemplate.queryForObject("select nextval(?)", new RowMapper<Pessoa>() {
 
 			@Override
-			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return rs.getInt(1);
+			public Pessoa mapRow(ResultSet rs, int rowNum) throws SQLException {
+				 entity.setId(rs.getInt(1));
+				 return entity;
 			}
 			
-		}, "SEQ_" + Pessoa.entityName + "_id");
-		return seq;
+		}, "SEQ_" + BaseEntity.getEntityName(entity) + "_id");
+		
 	}
 
 }

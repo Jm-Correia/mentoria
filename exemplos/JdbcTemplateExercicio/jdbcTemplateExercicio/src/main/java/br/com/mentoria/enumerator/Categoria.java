@@ -26,6 +26,13 @@ public enum Categoria {
 			// TODO Auto-generated method stub
 			return new BigDecimal(0.0);
 		}
+	}, books(3, "Books", 0.00){
+		@Override
+		public BigDecimal desconto(final Integer qtd, final Double preco) {
+			// TODO Auto-generated method stub
+			return new BigDecimal(0.0);
+		}
+		
 	};
 	
 	private int id;
