@@ -52,11 +52,11 @@ public class JdbcTemplateExercicioApplication implements CommandLineRunner {
 		
 		cidadeRepository.insertLote(Arrays.asList(c1, c2, c3, c4, c5));
 		
-//		Pessoa p1 = new Pessoa(null, "Test", "Test@test.com", "000.000.000-00", TipoPessoa.cpf);
-//		Endereco end = new Endereco(null, "Rua Ferreira Viana", "55", "", "Areias", "50860-190", null, null);
-//		log.info(p1.toString());
-//		log.info("Inserindo no h2 database");
-//		service.cadastrarPessoa(p1, end);
+		Pessoa p1 = new Pessoa(null, "Test", "Test@test.com", "000.000.000-00", TipoPessoa.cpf);
+		Endereco end = new Endereco(null, "Rua Ferreira Viana", "55", "", "Areias", "50860-190", null, null);
+		log.info(p1.toString());
+		log.info("Inserindo no h2 database");
+		service.cadastrarPessoa(p1, end);
 	}
 
 }
