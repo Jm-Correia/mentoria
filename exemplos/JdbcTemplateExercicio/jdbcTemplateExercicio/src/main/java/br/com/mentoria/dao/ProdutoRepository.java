@@ -102,7 +102,7 @@ public class ProdutoRepository implements Sequencial<Produto>, InsertPorLoteDAO<
 		for(Map row: rows) {
 			var id = (Integer)row.get("ID");
 			var nome = (String) row.get("NOME");
-			var preco =  ((BigDecimal)row.get("PRECO")).doubleValue();
+			var preco =  ((Double)row.get("PRECO"));
 			//var categoria = Integer.parseInt((String) row.get("CATEGORIA"));
 			Produto p = new Produto(id, nome, preco, Categoria.books);
 			produtos.add(p);

@@ -37,7 +37,7 @@ public class JdbcTemplateExercicioApplication implements CommandLineRunner {
 //	
 //	@Autowired
 //	private ConsultarPessoaService consultarPessoaService;
-	
+//	
 //	@Autowired
 //	private EstadoRepository estadoRepository;
 //	
@@ -72,51 +72,51 @@ public class JdbcTemplateExercicioApplication implements CommandLineRunner {
 //		var pessoa = consultarPessoaService.findById(1);
 //		log.info("Pessoa {} com os enderecos {}", pessoa.toString(), pessoa.getEnderecos().toString());
 //		
-		var livroDosCodigos = new Produto("livro dos Codigos", 58.90, Categoria.books);
-		var java11CompleteReferencia = new Produto("Java 11 Completa Referencia", 258.90, Categoria.books);
-		var pivotCertification = new Produto("PivotCertification", 358.90, Categoria.books);
-		var nodeJS = new Produto("Cookbook Node JS 4 edition", 98.90, Categoria.books);
-		var batmanAno1 = new Produto("Batman ano 1", 38.90, Categoria.books);
-		var batmanAno2 = new Produto("Batman ano 2", 58.90, Categoria.books);
-		var batmanAno3 = new Produto("Batman ano 3", 28.90, Categoria.books);
-		var batmanAno4 = new Produto("Batman ano 4", 28.90, Categoria.books);
-		var batmanAno5 = new Produto("Batman ano 5", 28.90, Categoria.books);
-		var batmanAno6 = new Produto("Batman ano 6", 28.90, Categoria.books);
-		var batmanAno7 = new Produto("Batman ano 7", 28.90, Categoria.books);
-		var batmanAno8 = new Produto("Batman ano 8", 28.90, Categoria.books);
-		var batmanAno9 = new Produto("Batman ano 9", 28.90, Categoria.books);
-		var batmanAno10 = new Produto("Batman ano 10", 28.90, Categoria.books);
-		var batmanAno11 = new Produto("Batman ano 11", 28.90, Categoria.books);
-		var batmanAno12 = new Produto("Batman ano 12", 28.90, Categoria.books);
-		var batmanAno13 = new Produto("Batman ano 13", 28.90, Categoria.books);
-		var batmanAno14 = new Produto("Batman ano 14", 28.90, Categoria.books);
-		var batmanAno15 = new Produto("Batman ano 15", 28.90, Categoria.books);
-		var batmanAno16 = new Produto("Batman ano 16", 28.90, Categoria.books);
+//		var livroDosCodigos = new Produto("livro dos Codigos", 58.90, Categoria.books);
+//		var java11CompleteReferencia = new Produto("Java 11 Completa Referencia", 258.90, Categoria.books);
+//		var pivotCertification = new Produto("PivotCertification", 358.90, Categoria.books);
+//		var nodeJS = new Produto("Cookbook Node JS 4 edition", 98.90, Categoria.books);
+//		var batmanAno1 = new Produto("Batman ano 1", 38.90, Categoria.books);
+//		var batmanAno2 = new Produto("Batman ano 2", 58.90, Categoria.books);
+//		var batmanAno3 = new Produto("Batman ano 3", 28.90, Categoria.books);
+//		var batmanAno4 = new Produto("Batman ano 4", 28.90, Categoria.books);
+//		var batmanAno5 = new Produto("Batman ano 5", 28.90, Categoria.books);
+//		var batmanAno6 = new Produto("Batman ano 6", 28.90, Categoria.books);
+//		var batmanAno7 = new Produto("Batman ano 7", 28.90, Categoria.books);
+//		var batmanAno8 = new Produto("Batman ano 8", 28.90, Categoria.books);
+//		var batmanAno9 = new Produto("Batman ano 9", 28.90, Categoria.books);
+//		var batmanAno10 = new Produto("Batman ano 10", 28.90, Categoria.books);
+//		var batmanAno11 = new Produto("Batman ano 11", 28.90, Categoria.books);
+//		var batmanAno12 = new Produto("Batman ano 12", 28.90, Categoria.books);
+//		var batmanAno13 = new Produto("Batman ano 13", 28.90, Categoria.books);
+//		var batmanAno14 = new Produto("Batman ano 14", 28.90, Categoria.books);
+//		var batmanAno15 = new Produto("Batman ano 15", 28.90, Categoria.books);
+//		var batmanAno16 = new Produto("Batman ano 16", 28.90, Categoria.books);
+//		
 		
-		
-		produtoRepo.insertLote(
-				Arrays.asList(
-						livroDosCodigos,
-						java11CompleteReferencia,
-						pivotCertification,
-						nodeJS,
-						batmanAno1,
-						batmanAno2,
-						batmanAno3,
-						batmanAno4,
-						batmanAno5,
-						batmanAno6,
-						batmanAno7,
-						batmanAno8,
-						batmanAno9,
-						batmanAno10,
-						batmanAno11,
-						batmanAno12,
-						batmanAno13,
-						batmanAno14,
-						batmanAno15,
-						batmanAno16));
-		
+//		produtoRepo.insertLote(
+//				Arrays.asList(
+//						livroDosCodigos,
+//						java11CompleteReferencia,
+//						pivotCertification,
+//						nodeJS,
+//						batmanAno1,
+//						batmanAno2,
+//						batmanAno3,
+//						batmanAno4,
+//						batmanAno5,
+//						batmanAno6,
+//						batmanAno7,
+//						batmanAno8,
+//						batmanAno9,
+//						batmanAno10,
+//						batmanAno11,
+//						batmanAno12,
+//						batmanAno13,
+//						batmanAno14,
+//						batmanAno15,
+//						batmanAno16));
+//		
 		PageRequest page = PageRequest.of(0, 5, Direction.DESC, "ID");
 		var pageable = produtoRepo.findAll(page);
 		log.info("Lista de Produtos {} produtos: {}", pageable.getMeta().getTotalPages(),pageable.getData().toString());
